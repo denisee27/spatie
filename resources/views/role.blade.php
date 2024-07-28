@@ -1,10 +1,9 @@
 @extends('layouts.layout')
 @section('content')
-
 <div class="d-flex justify-content-between mb-3">
-    <h2>Product List</h2>
+    <h2>Role List</h2>
     <button class="btn btn-primary">Create</button>
-</div>
+</div>  
 <div>
     <table class="table table-bordered text-center">
         <tr>
@@ -18,7 +17,6 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $data->name }}</td>
-            <td>{{ $data->description }}</td>
             <td>{{ \Carbon\Carbon::parse($data->created_at)->locale('id')->isoFormat('DD MMMM YYYY') }}</td>
             <td>
                 <a>Update</a>
@@ -28,24 +26,5 @@
         @endforeach
     </table>
 </div>
-
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
 @endsection

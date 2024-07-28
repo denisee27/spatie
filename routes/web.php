@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,8 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::get('/login/action', [LoginController::class, 'actionLogin']);
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/menu', [NavigationController::class, 'index']);
+    Route::get('/roles', [RoleController::class, 'index']);
 });
 
 

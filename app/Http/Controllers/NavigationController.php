@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Navigation;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class NavigationController extends Controller
 {
@@ -11,7 +12,7 @@ class NavigationController extends Controller
         $data = Navigation::get();
         $parse =[
             'datas' => $data
-        ];
+        ];  
         return view('menu',$parse);
     }
 
@@ -27,7 +28,9 @@ class NavigationController extends Controller
             $action = explode(',', $action);
             $item->action = $action;
         }
-        $item->status = (isset($request->status) ? $request->status : 0);
+        $item->status = (isset($request->status) ? (int)$request->status : 0);
         $item->save();
+        Alert::success('Submit Berhasil','Data berhasil disimpan');
+        return back();
     }
 }

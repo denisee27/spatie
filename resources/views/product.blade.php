@@ -3,7 +3,9 @@
 
 <div class="d-flex justify-content-between mb-3">
     <h2>Product List</h2>
+    @can('create_product')
     <button class="btn btn-primary">Create</button>
+    @endcan
 </div>
 <div>
     <table class="table table-bordered text-center">

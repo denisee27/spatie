@@ -2,14 +2,13 @@
 @section('content')
 <div class="d-flex justify-content-between mb-3">
     <h2>Role List</h2>
-    <button class="btn btn-primary">Create</button>
+    <a href="{{ url('/roles/create') }}" class="btn btn-primary">Create</a>
 </div>  
 <div>
     <table class="table table-bordered text-center">
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Created At</th>
             <th>Action</th>
         </tr>

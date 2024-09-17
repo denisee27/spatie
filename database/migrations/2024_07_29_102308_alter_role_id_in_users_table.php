@@ -14,7 +14,7 @@ class AlterRoleIdInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role')->nullable()->after('name')->constrained('roles')->onDelete('set null');
+            $table->string('role',64)->nullable()->after('name');
         });
     }
 
@@ -26,7 +26,6 @@ class AlterRoleIdInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['role']);
             $table->dropColumn('role');
         });
     }

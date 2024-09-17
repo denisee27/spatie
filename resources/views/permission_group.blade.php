@@ -16,6 +16,11 @@
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $data->name }}</td>
+            <td>
+                @foreach($data->permission as $permission)
+                    {{ $permission->name }}
+                @endforeach
+            </td>
             <td>{{ \Carbon\Carbon::parse($data->created_at)->locale('id')->isoFormat('DD MMMM YYYY') }}</td>
             <td>
                 <a>Update</a>

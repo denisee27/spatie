@@ -34,26 +34,32 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ url('/permission_group/create') }}">
+                <form method="POST" action="{{ url('/users/create') }}">
                 @csrf
                 <div class="input-group mb-3">
                     <div class="form-floating">
                         <input name="name" type="text" class="form-control" id="name" placeholder="Name" required>
                         <label for="name">Name</label>
                     </div>
+                </div>
+                <div class="input-group mb-3">
                     <div class="form-floating">
                         <select name="role" class="form-select" id="role">
                             <option selected>Select Role</option>
                             @foreach($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            <option value="{{ $role->name }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
                         <label for="role">Role</label>
                     </div>
+                </div>
+                <div class="input-group mb-3">
                     <div class="form-floating">
                         <input name="email" type="text" class="form-control" id="email" placeholder="email" required>
                         <label for="email">Email</label>
                     </div>
+                </div>
+                <div class="input-group mb-3">
                     <div class="form-floating">
                         <input name="password" type="text" class="form-control" id="password" placeholder="password" required>
                         <label for="password">Password</label>

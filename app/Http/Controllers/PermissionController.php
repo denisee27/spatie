@@ -10,7 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PermissionController extends Controller
 {
     public function index(){
-        $data = Permission::get();
+        // $data = Permission::get();
+        $data = Permission::whereHas('group',function($q){
+            $q->orderBy('name','asc');
+        })->get();
         $group = PermissionGroup::get();
         $parse = [
             'datas' => $data,

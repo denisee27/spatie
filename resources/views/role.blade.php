@@ -18,7 +18,7 @@
             <td>{{ $data->name }}</td>
             <td>{{ \Carbon\Carbon::parse($data->created_at)->locale('id')->isoFormat('DD MMMM YYYY') }}</td>
             <td>
-                <a>Update</a>
+                <a href="{{ url('/roles/update/'.$data->id) }}">Update</a>
                 <a>Delete</a>
             </td>
         </tr>

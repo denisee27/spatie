@@ -39,14 +39,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/{id:[a-zA-Z-?0-9]+}', 'CMS\ClusterController@index');
         Route::get('/create', [RoleController::class, 'create']);
         Route::post('/store', [RoleController::class, 'store']);
-        Route::post('/update', 'CMS\ClusterController@update');
+        Route::get('/update/{id}', [RoleController::class, 'show_edit']);
+        Route::post('/update/store/{id}', [RoleController::class, 'update']);
         Route::delete('/delete', 'CMS\ClusterController@delete');
     });
     Route::group(['prefix' => 'menu'], function () {
         Route::get('/', [NavigationController::class, 'index']);
         Route::get('/{id:[a-zA-Z-?0-9]+}', 'CMS\ClusterController@index');
         Route::post('/create', [NavigationController::class, 'create']);
-        Route::post('/update', 'CMS\ClusterController@update');
+        Route::post('/update', 'CMS\ClusterController@show_edit');
         Route::delete('/delete', 'CMS\ClusterController@delete');
     });
     Route::group(['prefix' => 'permission_group'], function () {

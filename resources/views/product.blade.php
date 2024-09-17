@@ -3,10 +3,14 @@
 
 <div class="d-flex justify-content-between mb-3">
     <h2>Product List</h2>
-    @can('create_product')
+    @role('admin')
     <button class="btn btn-primary">Create</button>
-    @endcan
-</div>
+    @endrole
+
+    
+    
+  </div>
+  @can('read_product')
 <div>
     <table class="table table-bordered text-center">
         <tr>
@@ -30,6 +34,7 @@
         @endforeach
     </table>
 </div>
+@endcan
 
 <div class="modal" tabindex="-1">
     <div class="modal-dialog">

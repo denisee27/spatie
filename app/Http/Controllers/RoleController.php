@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission as ModelsPermission;
+use App\Models\RoleHasPermission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
@@ -27,6 +28,18 @@ class RoleController extends Controller
             'permission' => $permission,
         ];
         return view('role_create',$parse);
+    }
+
+    public function show_edit($id){
+        $setview = Role::where('id',$id)->first();
+        $role_permission = RoleHasPermission::where('role_id', $id)->get();
+        $permission = ModelsPermission ::get();
+        $parse = [
+            'role' => $setview,
+            'role_permission' => $role_permission,
+            'permission' => $permission,
+        ];
+        return view('role_update',$parse);
     }
 
     public function store(Request $request){
@@ -55,5 +68,22 @@ class RoleController extends Controller
         Alert::success('Konfirmasi input data', 'Data berhasil di input');
         return back();
 
+    }
+    public function update($id, Request $request)
+    {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        $permission = Permission::get();
+        $role = Role::find($id);
+        foreach ($permission as $p) {
+            $nama = $p->name;
+            $role->givePermissionTo($request->$nama);
+            if ($request->$nama == 0) {
+                $role->revokePermissionTo($nama);
+            }
+        }
+
+        Alert::success('Konfirmasi update data', 'Data berhasil di update');
+        return back();
     }
 }

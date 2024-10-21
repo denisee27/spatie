@@ -10,7 +10,7 @@
     
     
   </div>
-  @can('read_product')
+  {{-- @can('read_product') --}}
 <div>
     <table class="table table-bordered text-center">
         <tr>
@@ -20,21 +20,16 @@
             <th>Created At</th>
             <th>Action</th>
         </tr>
-        @foreach($datas as $key => $data)
-        <tr>
-            <td>{{ $key + 1 }}</td>
-            <td>{{ $data->name }}</td>
-            <td>{{ $data->description }}</td>
-            <td>{{ \Carbon\Carbon::parse($data->created_at)->locale('id')->isoFormat('DD MMMM YYYY') }}</td>
-            <td>
-                <a>Update</a>
-                <a>Delete</a>
-            </td>
-        </tr>
+        @foreach($roles as $key => $role)
+          <tr>
+            <td>{{ $key += 1 }}</td>
+            <td>{{ $role->name }}</td>
+            <td>{{ $role->created_at }}</td>
+          </tr>
         @endforeach
     </table>
 </div>
-@endcan
+{{-- @endcan --}}
 
 <div class="modal" tabindex="-1">
     <div class="modal-dialog">

@@ -34,11 +34,13 @@ class RoleController extends Controller
         $setview = Role::where('id',$id)->first();
         $role_permission = RoleHasPermission::where('role_id', $id)->get();
         $permission = ModelsPermission ::get();
+
         $parse = [
             'role' => $setview,
             'role_permission' => $role_permission,
             'permission' => $permission,
         ];
+
         return view('role_update',$parse);
     }
 

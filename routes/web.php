@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\PermissionController;
@@ -67,6 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create', [UserController::class, 'create']);
         Route::post('/update', [UserController::class, 'update']);
         Route::post('/delete', [UserController::class, 'delete']);
+    });
+    Route::group(['prefix' => 'email'], function () {
+        Route::get('/', [EmailController::class, 'index']);
+        Route::post('/create', [EmailController::class, 'create']);
     });
 
 });

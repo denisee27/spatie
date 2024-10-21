@@ -84,25 +84,24 @@
                         <div class="row">
                             <label label class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
-                                <input name="name" type="text" class="form-control" placeholder="Roles Name" value="12321" required >
+                                <input name="name" type="text" class="form-control" placeholder="Roles Name" value="{{ $ }}" required >
                             </div>
                         </div>
                         <div style="border-bottom: 0.5px solid silver; margin-bottom: 15px"></div>
                         @foreach ($permission->groupBy('group_id') as $row)
                         <div class="row">
-                            <label class="col-sm-2 control-label">{!! $row[0]->group->name ?? '-'!!}</label>
+                            <label class="col-sm-2 control-label">{{ $row[0]->group->name ?? '-'}}</label>
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-md-12">
                                         @foreach ($row as $name )
                                         <label class="col-md-2">
                                             <input type="checkbox" name="{{ $name->name }}" value="{{ $name->name }}"
-                                            @foreach ($role_permission as $pr ) {{ $name->id == $pr->permission_id ?
-                                                'checked' : '' }}
-                                                @endforeach 
-                                                />
+                                            @foreach ($role_permission as $pr ) 
+                                                {{ $name->id == $pr->permission_id ? 'checked' : '' }}
+                                            @endforeach 
+                                            />
                                                 {{ $name->name }}
-                                            {{-- <span class="checkmark"></span></span> --}}
                                         </label>
                                         @endforeach
                                     </div>

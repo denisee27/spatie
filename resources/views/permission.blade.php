@@ -36,7 +36,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ url('/permission/create') }}">
+                <form method="POST" action="{{ url('/permission/create'.$kocak->id) }}">
                 @csrf
                 <div class="form-floating">
                     <select name="group_id" class="form-select" id="group_id">

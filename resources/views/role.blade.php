@@ -12,7 +12,7 @@
             <th>Created At</th>
             <th>Action</th>
         </tr>
-        @foreach($datas as $key => $data)
+        @foreach($datas as $key=> $data)
         <tr>
             <td>{{ $key + 1 }}</td>
             <td>{{ $data->name }}</td>

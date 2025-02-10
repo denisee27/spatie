@@ -15,7 +15,7 @@ class EmailController extends Controller
         $parse = [
             'datas' => $data
         ];
-        return view('email',$parse);
+    return view('email',$parse);
     }
 
     public function create(Request $request){
@@ -25,7 +25,7 @@ class EmailController extends Controller
                 'subject' => $request->subject,
                 'message' => $request->message
             ];
-                
+            
             Mail::to($request->to)->send(new SendingEmail($details));
             Alert::success('Email Berhasil Terkirim');
             return back();

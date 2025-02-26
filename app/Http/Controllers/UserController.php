@@ -27,7 +27,6 @@ class UserController extends Controller
     }
 
     public function create(Request $request){
-        dd($request);
         $store = new User();
         $store->name = $request->name;
         $store->email = $request->email;
@@ -36,7 +35,7 @@ class UserController extends Controller
         $store->save();
 
         // foreach($request->categories as $category){
-        //     $addres = new CustomerAddress()
+        //     $addres = new CustomerAddress();
         //     $addres->customer_id = $store->id;
         //     $addres->name = $category;
         //     $address->save();

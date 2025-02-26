@@ -33,7 +33,6 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/action', [LoginController::class, 'actionLogin']);
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/products', [ProductController::class, 'index']);
     Route::get('/roles', [RoleController::class, 'index']);
     Route::group(['prefix' => 'roles'], function () {
         Route::get('/', [RoleController::class, 'index']);
@@ -68,6 +67,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create', [UserController::class, 'create']);
         Route::post('/update', [UserController::class, 'update']);
         Route::post('/delete', [UserController::class, 'delete']);
+    });
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/', [ProductController::class, 'index']);
+        Route::post('/create', [ProductController::class, 'create']);
+        Route::put('/update/{id}', [ProductController::class, 'update']);
+        Route::get('/delete/{id}', [ProductController::class, 'delete']);
     });
     Route::group(['prefix' => 'email'], function () {
         Route::get('/', [EmailController::class, 'index']);

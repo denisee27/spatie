@@ -9,7 +9,7 @@ class Product extends Model
 {
     public function categories()
     {
-        return $this->hasMany(CategoryProduct::class)->with('category');
+        return $this->belongsToMany(Category::class, 'category_products');
     }
     public function products()
     {
